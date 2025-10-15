@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(if [ -d \"public\" ])",
+      "Bash(then ls -la public)",
+      "Bash(else echo \"Folder public belum ada\")",
+      "Bash(fi)",
+      "Bash(mkdir:*)",
+      "Bash(for dir in public/images/*/)",
+      "Bash(done)",
+      "Bash(npm run dev)",
+      "Bash(timeout:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

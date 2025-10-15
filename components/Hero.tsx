@@ -162,7 +162,7 @@ const Hero = () => {
           variants={itemVariants}
           className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 h-20 flex items-center justify-center"
         >
-          <span className="text-purple-400 mr-3">I'm a</span>
+          <span className="text-purple-400 mr-3">I&apos;m a</span>
           <span className="relative">
             <motion.span
               className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"

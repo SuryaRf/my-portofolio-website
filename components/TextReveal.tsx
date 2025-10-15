@@ -15,7 +15,7 @@ export const TextReveal = ({ children, className = "", delay = 0 }: TextRevealPr
 
   const container = {
     hidden: { opacity: 0 },
-    visible: (i = 1) => ({
+    visible: () => ({
       opacity: 1,
       transition: { staggerChildren: 0.03, delayChildren: delay },
     }),

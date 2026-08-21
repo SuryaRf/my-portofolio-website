@@ -13,7 +13,7 @@ const fadeUp = {
 };
 
 const stack = [
-  "Flutter", "React", "Next.js", "Laravel", "Node.js", "TypeScript",
+  "Flutter", "React", "Laravel", "Node.js", "LLM API", "Gemini AI",
   "PostgreSQL", "Firebase", "Tailwind CSS", "GraphQL",
 ];
 
@@ -51,7 +51,7 @@ const Hero = () => {
             >
               Building{" "}
               <span className="font-serif italic font-normal text-emerald-600">
-                practical software
+                intelligent software
               </span>{" "}
               for web &amp; mobile.
             </motion.h1>
@@ -61,11 +61,12 @@ const Hero = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-base md:text-lg text-zinc-500 max-w-lg leading-relaxed mb-8"
+              className="text-base md:text-lg text-zinc-600 max-w-lg leading-relaxed mb-8"
             >
-              Surya Rahmat Fatahillah — full stack developer from Malang,
-              Indonesia. From Flutter apps and Laravel platforms to blockchain
-              experiments, I turn ideas into products people actually use.
+              Surya Rahmat Fatahillah — full stack developer based in
+              Indonesia. From Flutter apps and Laravel platforms to
+              LLM-powered document analysis and AI chatbots, I turn ideas into
+              products people actually use.
             </motion.p>
 
             <motion.div
@@ -124,7 +125,7 @@ const Hero = () => {
           {[...stack, ...stack].map((tech, i) => (
             <span
               key={`${tech}-${i}`}
-              className="flex items-center gap-8 text-sm text-zinc-400 whitespace-nowrap"
+              className="flex items-center gap-8 text-sm text-zinc-500 whitespace-nowrap"
             >
               {tech}
               <span className="w-1 h-1 rounded-full bg-emerald-400" />

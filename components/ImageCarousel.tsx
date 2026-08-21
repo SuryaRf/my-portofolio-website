@@ -96,7 +96,7 @@ const ImageCarousel = ({ images, title }: ImageCarouselProps) => {
         </>
       )}
 
-      <div className="absolute top-2 right-2 font-mono text-[10px] text-zinc-400 bg-white/80 px-1.5 py-0.5 rounded z-10">
+      <div className="absolute top-2 right-2 font-mono text-[10px] text-zinc-500 bg-white/80 px-1.5 py-0.5 rounded z-10">
         {currentIndex + 1} / {images.length}
       </div>
     </div>

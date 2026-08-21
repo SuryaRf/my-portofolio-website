@@ -17,9 +17,9 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Surya Rahmat Fatahillah — Full Stack Developer",
+  title: "Surya Rahmat Fatahillah — Full Stack & AI Integration Developer",
   description:
-    "Portfolio of Surya Rahmat Fatahillah — Full Stack Web Developer, Mobile Developer, and Network Engineer based in Malang, Indonesia.",
+    "Portfolio of Surya Rahmat Fatahillah — Mobile Developer, Full Stack Developer, Data Analyst, and AI Integration Specialist. Specializing in Flutter, React, Laravel, Node.js, and AI integration (LLM, chatbots, document analysis).",
   keywords: [
     "Full Stack Developer",
     "Mobile Developer",

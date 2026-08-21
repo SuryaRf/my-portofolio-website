@@ -112,7 +112,7 @@ const Contact = () => {
                 together
               </span>
             </h2>
-            <p className="text-zinc-500 max-w-md mx-auto leading-relaxed mb-8">
+            <p className="text-zinc-600 max-w-md mx-auto leading-relaxed mb-8">
               I&apos;m currently available for freelance work and new
               opportunities. The fastest way to reach me is by email.
             </p>
@@ -131,7 +131,7 @@ const Contact = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.name}
-                    className="p-2.5 rounded-full border border-zinc-200 bg-white text-zinc-400 hover:text-emerald-700 hover:border-emerald-200 transition-colors"
+                    className="p-2.5 rounded-full border border-zinc-200 bg-white text-zinc-500 hover:text-emerald-700 hover:border-emerald-200 transition-colors"
                   >
                     {social.icon}
                   </a>
@@ -146,7 +146,7 @@ const Contact = () => {
           >
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="name" className="block text-xs font-mono uppercase tracking-wide text-zinc-400 mb-2">
+                <label htmlFor="name" className="block text-xs font-mono uppercase tracking-wide text-zinc-500 mb-2">
                   Name
                 </label>
                 <input
@@ -161,7 +161,7 @@ const Contact = () => {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-xs font-mono uppercase tracking-wide text-zinc-400 mb-2">
+                <label htmlFor="email" className="block text-xs font-mono uppercase tracking-wide text-zinc-500 mb-2">
                   Email
                 </label>
                 <input
@@ -178,7 +178,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label htmlFor="subject" className="block text-xs font-mono uppercase tracking-wide text-zinc-400 mb-2">
+              <label htmlFor="subject" className="block text-xs font-mono uppercase tracking-wide text-zinc-500 mb-2">
                 Subject
               </label>
               <input
@@ -194,7 +194,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-xs font-mono uppercase tracking-wide text-zinc-400 mb-2">
+              <label htmlFor="message" className="block text-xs font-mono uppercase tracking-wide text-zinc-500 mb-2">
                 Message
               </label>
               <textarea

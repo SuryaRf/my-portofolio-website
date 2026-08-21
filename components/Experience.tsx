@@ -1,20 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 
-interface ExperienceItem {
-  title: string;
-  company: string;
-  period: string;
-  description: string;
-  achievements: string[];
-}
-
-const workExperiences: ExperienceItem[] = [
+const workExperiences = [
   {
-    title: "Full Stack Software Developer",
+    role: "Full Stack Software Developer Intern",
+    company: "PT Multi Spunindo Jaya",
+    period: "Jan 2026 — Jul 2026",
+    description:
+      "Developing and maintaining internal web-based applications to support business operations using modern full-stack technologies.",
+    achievements: [
+      "Developing internal web applications for business operations",
+      "Building and consuming REST APIs between frontend and backend services",
+      "Collaborating with engineers and operational staff on requirements & delivery",
+      "Participating in code reviews, testing, and deployment processes",
+    ],
+  },
+  {
+    role: "Full Stack Software Developer",
     company: "PT Leadership Nasional Asia",
     period: "Aug 2025 — Dec 2025",
     description:
@@ -23,11 +26,11 @@ const workExperiences: ExperienceItem[] = [
       "Designed and managed databases (PostgreSQL/MySQL)",
       "Optimized app performance (caching, lazy loading, query optimization)",
       "Deployment & server configuration (VPS/Cloud, CI/CD)",
-      "Collaborated with UI/UX, QA, and Project Managers",
+      "Collaborated closely with QA and Project Managers",
     ],
   },
   {
-    title: "Mobile Developer",
+    role: "Mobile Developer",
     company: "Profile Image Studio",
     period: "Aug 2025 — Dec 2025",
     description:
@@ -39,7 +42,7 @@ const workExperiences: ExperienceItem[] = [
     ],
   },
   {
-    title: "Freelance Mobile Developer",
+    role: "Freelance Mobile Developer",
     company: "Self-Employed",
     period: "Dec 2023 — Present",
     description:
@@ -51,7 +54,7 @@ const workExperiences: ExperienceItem[] = [
     ],
   },
   {
-    title: "Social Media Specialist",
+    role: "Social Media Specialist",
     company: "Singhasari SEZ — AWS SEAL",
     period: "Dec 2023 — Mar 2024",
     description:
@@ -63,7 +66,7 @@ const workExperiences: ExperienceItem[] = [
     ],
   },
   {
-    title: "Business Development",
+    role: "Business Development",
     company: "Buka Digital",
     period: "Jun 2023 — Jul 2023",
     description:
@@ -73,151 +76,163 @@ const workExperiences: ExperienceItem[] = [
       "Analyzed client data and followed social media trends",
     ],
   },
+  {
+    role: "Data Entry Specialist",
+    company: "Badan Pertanahan Nasional Pasuruan",
+    period: "Jan 2022 — Apr 2022",
+    description:
+      "Verifying and ensuring accuracy of data entry. Creating reports for land certificate data.",
+    achievements: [
+      "Verified data accuracy and corrected errors",
+      "Generated land certificate reports (plot, area, owner identity)",
+    ],
+  },
 ];
 
-const organizationExperiences: ExperienceItem[] = [
+const organizationExperiences = [
   {
-    title: "Google Student Ambassador",
-    company: "Google Indonesia",
-    period: "Aug 2025 — Present",
-    description:
-      "Representing Google on campus to introduce Google's technology ecosystem through seminars, workshops, hackathons, and study jams.",
+    role: "Chairman",
+    org: "Kelompok Studi Programer Mobile (KSPM)",
+    period: "2025 — 2026",
     achievements: [
-      "Conducting technical training (Flutter, Firebase, Google Cloud, AI/ML)",
-      "Building active campus developer community",
-      "Collaborating with Google team and ambassadors nationally",
+      "Led and coordinated the mobile developer student community",
+      "Organized workshops and technical learning sessions",
     ],
   },
   {
-    title: "Chairman",
-    company: "KSPM Politeknik Negeri Malang",
-    period: "Feb 2025 — Feb 2026",
-    description:
-      "Leading organization activities and organizing seminars, workshops, and stock classes to enhance student investment literacy.",
-    achievements: [
-      "Developed strategies to increase student investment literacy",
-      "Built relationships with IDX, OJK, securities, and external organizations",
-      "Drove internal digital innovation (member management system, internal apps)",
-    ],
-  },
-  {
-    title: "Public Relations",
-    company: "IT Department English Community",
-    period: "2023 — 2024",
-    description:
-      "Managing public relations and communications for the IT Department's English learning community.",
-    achievements: [
-      "Coordinated communication with external stakeholders",
-      "Promoted community events and activities",
-    ],
-  },
-  {
-    title: "Staff Eksternal",
-    company: "Polinema Mengajar",
+    role: "External Affairs Staff",
+    org: "Polinema Mengajar",
     period: "2024 — 2025",
-    description:
-      "Managing external relations and partnerships for a volunteer teaching program, coordinating with schools and educational institutions.",
     achievements: [
-      "Built partnerships with schools and educational institutions",
-      "Coordinated volunteer teaching programs",
+      "Managed external partnerships and school outreach programs",
+      "Coordinated teaching volunteer activities across partner schools",
+    ],
+  },
+  {
+    role: "Sponsorship Department Staff",
+    org: "English Community Polinema",
+    period: "2023 — 2024",
+    achievements: [
+      "Secured event sponsorships and managed partner relations",
+      "Supported funding strategy for community events",
+    ],
+  },
+  {
+    role: "Member",
+    org: "Workshop Riset Informatika",
+    period: "2023 — 2024",
+    achievements: [
+      "Participated in research and technology workshops",
+      "Contributed to collaborative informatics projects",
     ],
   },
 ];
 
 const Timeline = ({
+  label,
   items,
-  inView,
 }: {
-  items: ExperienceItem[];
-  inView: boolean;
+  label: string;
+  items: typeof workExperiences;
 }) => (
-  <div className="space-y-10 border-l border-zinc-200 ml-1">
-    {items.map((exp, i) => (
+  <div className="relative border-l border-zinc-200 ml-2 space-y-14">
+    {items.map((item, i) => (
       <motion.div
-        key={`${exp.company}-${exp.title}`}
+        key={`${item.role}-${item.company}`}
         initial={{ opacity: 0, y: 16 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.45, delay: i * 0.06 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.4, delay: i * 0.05 }}
         className="relative pl-8"
       >
-        <span className="absolute -left-[4.5px] top-2 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-50" />
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
-          <h4 className="text-base font-medium text-zinc-900">{exp.title}</h4>
-          <span className="text-sm text-zinc-300">·</span>
-          <span className="text-sm font-medium text-emerald-700">
-            {exp.company}
-          </span>
-        </div>
-        <p className="font-mono text-xs text-zinc-400 mb-3">{exp.period}</p>
-        <p className="text-sm text-zinc-500 leading-relaxed mb-3 max-w-2xl">
-          {exp.description}
+        <span className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-zinc-300" />
+        <p className="font-mono text-xs tracking-wider text-zinc-500 mb-1">
+          {item.period}
         </p>
-        <ul className="space-y-1.5">
-          {exp.achievements.map((achievement) => (
+        <h3 className="text-lg md:text-xl font-semibold tracking-tight text-zinc-900">
+          {item.role}
+        </h3>
+        <p className="text-sm font-medium text-emerald-700 mb-3">
+          {item.company}
+        </p>
+        <p className="text-sm leading-relaxed text-zinc-600 mb-4 max-w-xl">
+          {item.description}
+        </p>
+        <ul className="space-y-2 mb-4">
+          {item.achievements.map((a) => (
             <li
-              key={achievement}
-              className="text-sm text-zinc-400 flex items-start gap-2"
+              key={a}
+              className="text-sm text-zinc-600 flex items-start gap-2"
             >
-              <span className="mt-[7px] w-1 h-1 rounded-full bg-zinc-300 shrink-0" />
-              {achievement}
+              <span className="mt-[7px] w-1 h-1 rounded-full bg-emerald-400 shrink-0" />
+              {a}
             </li>
           ))}
         </ul>
       </motion.div>
     ))}
+    <span className="sr-only">{label}</span>
   </div>
 );
 
-const Experience = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+const Experience = () => (
+  <section id="experience" className="py-24 bg-white">
+    <div className="max-w-5xl mx-auto px-6">
+      <p className="font-mono text-xs uppercase tracking-widest text-emerald-600 mb-3">
+        03 · Experience
+      </p>
+      <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900 mb-12">
+        Where I&apos;ve{" "}
+        <span className="font-serif italic font-normal text-emerald-600">
+          worked
+        </span>
+      </h2>
 
-  return (
-    <section id="experience" className="py-24">
-      <div className="max-w-5xl mx-auto px-6">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="grid lg:grid-cols-[240px_1fr] gap-10 lg:gap-16"
-        >
-          <div>
-            <div className="lg:sticky lg:top-28">
-              <p className="font-mono text-xs uppercase tracking-widest text-emerald-600 mb-3">
-                03 · Experience
-              </p>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900 mb-4">
-                Where I&apos;ve{" "}
-                <span className="font-serif italic font-normal text-emerald-600">
-                  worked
-                </span>
-              </h2>
-              <p className="text-sm text-zinc-400 leading-relaxed hidden lg:block">
-                Five years of hands-on experience across companies,
-                organizations, and freelance work.
-              </p>
-            </div>
-          </div>
+      <Timeline label="Work experience" items={workExperiences} />
 
-          <div className="space-y-16">
-            <div>
-              <h3 className="font-mono text-xs uppercase tracking-widest text-zinc-400 mb-8">
-                Work
-              </h3>
-              <Timeline items={workExperiences} inView={isInView} />
+      <h3 className="text-xl font-semibold tracking-tight text-zinc-900 mt-20 mb-10">
+        Beyond{" "}
+        <span className="font-serif italic font-normal text-emerald-600">
+          work
+        </span>
+      </h3>
+      <div className="grid sm:grid-cols-2 gap-4">
+        {organizationExperiences.map((org) => (
+          <motion.div
+            key={org.org}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.4 }}
+            className="rounded-2xl border border-zinc-200 bg-zinc-50/60 p-5 hover:border-emerald-200 hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300"
+          >
+            <div className="flex items-start justify-between gap-3 mb-3">
+              <h4 className="font-semibold tracking-tight text-zinc-900">
+                {org.role}
+              </h4>
+              <span className="font-mono text-xs text-zinc-500 whitespace-nowrap pt-1">
+                {org.period}
+              </span>
             </div>
-            <div>
-              <h3 className="font-mono text-xs uppercase tracking-widest text-zinc-400 mb-8">
-                Organization
-              </h3>
-              <Timeline items={organizationExperiences} inView={isInView} />
-            </div>
-          </div>
-        </motion.div>
+            <p className="text-sm font-medium text-emerald-700 mb-3">
+              {org.org}
+            </p>
+            <ul className="space-y-1.5">
+              {org.achievements.map((a) => (
+                <li
+                  key={a}
+                  className="text-sm text-zinc-600 flex items-start gap-2"
+                >
+                  <span className="mt-[7px] w-1 h-1 rounded-full bg-emerald-400 shrink-0" />
+                  {a}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Experience;

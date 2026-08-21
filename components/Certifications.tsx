@@ -5,30 +5,30 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 const certifications = [
-  { title: "Belajar Membuat Aplikasi Flutter Pemula", issuer: "Dicoding Indonesia", category: "Mobile Development" },
-  { title: "Memulai Pemrograman dengan Dart", issuer: "Dicoding Indonesia", category: "Programming" },
-  { title: "Beginner Flutter", issuer: "Great Learning", category: "Mobile Development" },
-  { title: "Introduction to SQL", issuer: "SoloLearn", category: "Database" },
-  { title: "Troubleshooting Jaringan Client Server", issuer: "KOMINFO", category: "Network Engineering" },
-  { title: "Introduction to Data Analyst", issuer: "RevoU", category: "Data Analytics" },
-  { title: "Dasar-dasar Analitik Data", issuer: "Coursera", category: "Data Analytics" },
-  { title: "Associate Data Scientist", issuer: "BNSP", category: "Data Science" },
+  { title: "Associate Data Scientist", issuer: "Badan Nasional Sertifikasi Profesi (BNSP)", highlighted: true },
+  { title: "Building Flutter Apps for Beginners", issuer: "Dicoding Indonesia" },
+  { title: "Getting Started with Dart Programming", issuer: "Dicoding Indonesia" },
+  { title: "Beginner Flutter", issuer: "Great Learning" },
+  { title: "Introduction to SQL", issuer: "SoloLearn" },
+  { title: "Network Service Troubleshooting on Client-Server Networks", issuer: "KOMINFO" },
+  { title: "Introduction to Data Analytics", issuer: "RevoU" },
+  { title: "Fundamentals of Data Analytics", issuer: "Coursera" },
 ];
 
 const education = [
   {
     school: "Politeknik Negeri Malang",
-    degree: "Sarjana Terapan Teknologi Informasi",
+    degree: "D-IV Information Technology — Business Information Systems",
     period: "2023 — Present",
-    score: "3.95",
-    scoreLabel: "GPA",
+    score: "3.97",
+    scoreLabel: "GPA / 4.00",
   },
   {
     school: "SMKS Yadika 1 Bangil",
-    degree: "Teknik Komputer dan Jaringan",
-    period: "2021 — 2023",
+    degree: "Computer and Network Engineering",
+    period: "Graduated 2023",
     score: "87.83",
-    scoreLabel: "Final Score",
+    scoreLabel: "Final Score / 100",
   },
 ];
 
@@ -62,22 +62,34 @@ const Certifications = () => {
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.35, delay: Math.min(i * 0.05, 0.4) }}
-                className="flex items-baseline justify-between gap-4 border-b border-zinc-100 pb-4"
+                className={`flex items-baseline justify-between gap-4 border-b pb-4 ${
+                  cert.highlighted
+                    ? "border-emerald-200"
+                    : "border-zinc-100"
+                }`}
               >
                 <div>
-                  <h3 className="text-sm text-zinc-700 leading-relaxed">
+                  <h3
+                    className={`text-sm leading-relaxed ${
+                      cert.highlighted
+                        ? "text-emerald-700 font-medium"
+                        : "text-zinc-700"
+                    }`}
+                  >
                     {cert.title}
+                    {cert.highlighted && (
+                      <span className="ml-2 inline-block align-middle px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wide text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full">
+                        Certified
+                      </span>
+                    )}
                   </h3>
-                  <p className="text-xs text-zinc-400 mt-1">{cert.issuer}</p>
+                  <p className="text-xs text-zinc-500 mt-1">{cert.issuer}</p>
                 </div>
-                <span className="shrink-0 font-mono text-xs text-emerald-600/80 hidden sm:block">
-                  {cert.category}
-                </span>
               </motion.div>
             ))}
           </div>
 
-          <h3 className="font-mono text-xs uppercase tracking-widest text-zinc-400 mb-6">
+          <h3 className="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-6">
             Education
           </h3>
           <div className="grid md:grid-cols-2 gap-4">
@@ -91,18 +103,20 @@ const Certifications = () => {
                     <h4 className="text-base font-medium text-zinc-900">
                       {edu.school}
                     </h4>
-                    <p className="text-sm text-zinc-500 mt-1">{edu.degree}</p>
+                    <p className="text-sm text-zinc-600 mt-1 leading-relaxed">
+                      {edu.degree}
+                    </p>
                   </div>
                   <div className="text-right shrink-0">
                     <span className="text-xl font-semibold text-emerald-700 tabular-nums">
                       {edu.score}
                     </span>
-                    <p className="text-[10px] font-mono uppercase tracking-wide text-zinc-400 mt-0.5">
+                    <p className="text-[10px] font-mono uppercase tracking-wide text-zinc-500 mt-0.5">
                       {edu.scoreLabel}
                     </p>
                   </div>
                 </div>
-                <p className="font-mono text-xs text-zinc-400">{edu.period}</p>
+                <p className="font-mono text-xs text-zinc-500">{edu.period}</p>
               </div>
             ))}
           </div>

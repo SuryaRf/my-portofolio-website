@@ -4,27 +4,69 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-const achievements = [
-  { title: "Mahasiswa Berprestasi 1 Politeknik Negeri Malang", category: "Academic Excellence", year: "2025" },
-  { title: "Mahasiswa Berprestasi Wilayah LLDIKTI 7 (Kategori Persahabatan)", category: "Regional Recognition", year: "2025" },
-  { title: "Awardee PF Muda Pertamina Foundation (TOP Ideas 2025)", category: "Innovation", year: "2025" },
-  { title: "Google Student Ambassador", category: "Community Leadership", year: "2025" },
-  { title: "Finalist Gemastik XVIII (Kategori Smart Device)", category: "National Competition", year: "2025" },
-  { title: "Juara 1 & Best Paper F2ST Research and Innovation — Universitas Negeri Malang", category: "Research", year: "2024" },
-  { title: "Juara 1 Lomba UI/UX Internal Competition", category: "Design", year: "2024" },
-  { title: "Juara 1 Social Media Content ENCOMPASS — Universitas Brawijaya", category: "Digital Marketing", year: "2024" },
-  { title: "Juara 2 MAGE X — ITS", category: "Technology Competition", year: "2024" },
-  { title: "Juara 1 UI/UX Internal Competition JTI", category: "Design", year: "2024" },
-  { title: "Mahasiswa Berprestasi Jurusan Teknologi Informasi", category: "Academic", year: "2024–2025" },
-  { title: "Best Paper Esai LINEAR — UNS", category: "Research", year: "2024" },
-  { title: "Medali Emas OSN GEMANESIA", category: "National Science Olympiad", year: "2024" },
-  { title: "Juara 3 Gagasan Inovasi Workshop Riset Informatika", category: "Innovation", year: "2023" },
-  { title: "Juara 2 Lomba Esai DPM Polinema", category: "Writing", year: "2023" },
-  { title: "Best Solution Hackathon Polinema", category: "Hackathon", year: "2023" },
-  { title: "Lolos PKM Maba (PKM-GFT)", category: "Research Grant", year: "2023" },
-  { title: "Gold Medal ONSB Informatika — Yapresindo", category: "National Competition", year: "2023" },
-  { title: "Gold Medal OSPAN Bahasa Inggris — Olimpiade Siswa Nasional", category: "Language Competition", year: "2023" },
-  { title: "Silver Medal Indonesian Science Competition (Bidang TI)", category: "Science Competition", year: "2023" },
+interface AchievementGroup {
+  label: string;
+  items: { title: string; year: string }[];
+}
+
+const achievementGroups: AchievementGroup[] = [
+  {
+    label: "Outstanding Student",
+    items: [
+      { title: "1st Place — Outstanding Student (Mahasiswa Berprestasi Utama), Politeknik Negeri Malang", year: "2025" },
+      { title: "3rd Place — Outstanding Student (Mahasiswa Berprestasi Utama), Politeknik Negeri Malang", year: "2026" },
+      { title: "Regional Outstanding Student — LLDIKTI Region 7, Friendship Category", year: "2025" },
+      { title: "Best Outstanding Student — Information Technology Department", year: "2024–26" },
+    ],
+  },
+  {
+    label: "Programs & Ambassadorship",
+    items: [
+      { title: "1st Place — Capital Market Literacy Ambassador (Duta Literasi Pasar Modal), OJK", year: "2025" },
+      { title: "Awardee — PF Muda Pertamina Foundation, TOP Ideas", year: "2025" },
+      { title: "Google Student Ambassador — Google Indonesia", year: "2025/26" },
+    ],
+  },
+  {
+    label: "Innovation & Technology",
+    items: [
+      { title: "Finalist — Gemastik XVIII, IoT Smart Device Category", year: "2025" },
+      { title: "1st Place — Internal Innovation Competition (Cipta Inovasi), JTI", year: "2025" },
+      { title: "2nd Place — IoT Category, Mage X, ITS", year: "2024" },
+      { title: "Best Solution — Hackathon Polinema", year: "2023" },
+      { title: "3rd Place — Innovation Ideas, Workshop Riset Informatika", year: "2023" },
+    ],
+  },
+  {
+    label: "Research",
+    items: [
+      { title: "1st Place & Best Paper — F2ST Research and Innovation, Universitas Negeri Malang", year: "2024" },
+      { title: "Best Paper — LINEAR Essay, Universitas Sebelas Maret", year: "2024" },
+      { title: "Accepted — Student Creativity Program (PKM-GFT)", year: "2023" },
+    ],
+  },
+  {
+    label: "Design & Content",
+    items: [
+      { title: "1st Place — UI/UX Internal Competition, JTI", year: "2024" },
+      { title: "1st Place — Social Media Content, ENCOMPASS, Universitas Brawijaya", year: "2024" },
+    ],
+  },
+  {
+    label: "Academic Olympiads",
+    items: [
+      { title: "Gold Medal — National Science Olympiad (OSN), GEMANESIA", year: "2024" },
+      { title: "Gold Medal — ONSB Informatics, Yapresindo", year: "2023" },
+      { title: "Gold Medal — OSPAN English Language, National Student Olympics", year: "2023" },
+      { title: "Silver Medal — IT Category, Indonesian Science Competition", year: "2023" },
+    ],
+  },
+  {
+    label: "Essay Competition",
+    items: [
+      { title: "2nd Place — Essay Competition, Student Representative Council (DPM) Polinema", year: "2023" },
+    ],
+  },
 ];
 
 const Achievements = () => {
@@ -50,24 +92,32 @@ const Achievements = () => {
             </span>
           </h2>
 
-          <div className="divide-y divide-zinc-200/70 border-y border-zinc-200/70">
-            {achievements.map((achievement, i) => (
+          <div className="space-y-10">
+            {achievementGroups.map((group, gi) => (
               <motion.div
-                key={achievement.title}
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.35, delay: Math.min(i * 0.03, 0.5) }}
-                className="group grid grid-cols-[auto_1fr] md:grid-cols-[64px_1fr_auto] gap-x-6 py-4 items-baseline hover:bg-white transition-colors px-3 -mx-3 rounded-lg"
+                key={group.label}
+                initial={{ opacity: 0, y: 16 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.45, delay: Math.min(gi * 0.06, 0.4) }}
               >
-                <span className="font-mono text-xs text-emerald-600 tabular-nums">
-                  {achievement.year}
-                </span>
-                <h3 className="text-sm text-zinc-600 group-hover:text-zinc-900 transition-colors leading-relaxed">
-                  {achievement.title}
+                <h3 className="font-mono text-xs uppercase tracking-widest text-emerald-600 mb-4">
+                  {group.label}
                 </h3>
-                <span className="hidden md:block font-mono text-xs text-zinc-400 text-right">
-                  {achievement.category}
-                </span>
+                <div className="divide-y divide-zinc-200/70 border-y border-zinc-200/70">
+                  {group.items.map((achievement) => (
+                    <div
+                      key={achievement.title}
+                      className="grid grid-cols-[auto_1fr] md:grid-cols-[64px_1fr] gap-x-6 py-3 items-baseline hover:bg-white transition-colors px-3 -mx-3 rounded-lg"
+                    >
+                      <span className="font-mono text-xs text-emerald-600 tabular-nums">
+                        {achievement.year}
+                      </span>
+                      <h4 className="text-sm text-zinc-700 leading-relaxed">
+                        {achievement.title}
+                      </h4>
+                    </div>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>
